@@ -94,6 +94,8 @@ The fusion of LION, a model adept at generating high-quality 3D shapes, with the
 
 # Multi-modal Learning:
 
+![ALT][Multi-Modal.jpg]
+
 LION's inherent adaptability makes it an ideal candidate for multi-modal learning, where the model is trained to process and integrate information from multiple types of data sources or formats.
 
   **3D Data + Textual Descriptions:** LION can be conditioned on textual prompts, allowing it to generate 3D structures based on specific textual descriptions. For instance, given a textual description like "Victorian-style house with a large porch," LION could generate a corresponding 3D model. The diffusion classifier can then classify this model based on its features and the associated textual description.
