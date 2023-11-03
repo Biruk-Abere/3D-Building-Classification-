@@ -94,7 +94,7 @@ The fusion of LION, a model adept at generating high-quality 3D shapes, with the
 
 # Multi-modal Learning:
 
-![ALT][Multi-Modal.jpg]
+![ALT](Multi-Modal.jpg)
 
 LION's inherent adaptability makes it an ideal candidate for multi-modal learning, where the model is trained to process and integrate information from multiple types of data sources or formats.
 
