@@ -1,4 +1,4 @@
-
+# Multi Modal Diffusion Model For 3D Building Classification
 ![ALT](Building.png)
 
 # Introduction 
@@ -49,7 +49,7 @@ The primary aim is to push the boundaries of what's achievable in terms of class
 
 # Diffusion Model For Classification 
 
-<img src="Diffusion_Classifier.jpeg" alt="ALT" width="800" height="600"/>
+<img src="Diffusion_Classifier.jpeg" alt="ALT" width="500" height="500"/>
 
 
 **Understanding Diffusion Models:**
