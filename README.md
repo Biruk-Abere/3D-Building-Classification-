@@ -34,15 +34,15 @@ To achieve accurate classification, it's essential to understand the various way
 
 **Methodology:**
 
-    The core of this approach is inspired by the groundbreaking paper titled “Your Diffusion Model is Secretly a Zero-Shot Classifier”. This paper presents a novel perspective on diffusion models, suggesting that while they are primarily designed for generative tasks, they possess an inherent capability for classification, especially in scenarios where labeled data is scarce, termed as "Zero-Shot" classification. In essence, the diffusion process, which typically transforms random noise into structured data samples, can also be harnessed to determine the likelihood of a data sample belonging to a particular class.
+The core of this approach is inspired by the groundbreaking paper titled “Your Diffusion Model is Secretly a Zero-Shot Classifier”. This paper presents a novel perspective on diffusion models, suggesting that while they are primarily designed for generative tasks, they possess an inherent capability for classification, especially in scenarios where labeled data is scarce, termed as "Zero-Shot" classification. In essence, the diffusion process, which typically transforms random noise into structured data samples, can also be harnessed to determine the likelihood of a data sample belonging to a particular class.
 
 **Building Net Dataset:**
 
-    This dataset serves as the foundation for the entire project. It comprises various 3D representations of buildings, and the models will be trained and tested on this data. The overarching objective is not just to fit the model to the data but to enhance its classification performance, ensuring it can accurately categorize different building types based on their 3D point-cloud representations.    
+This dataset serves as the foundation for the entire project. It comprises various 3D representations of buildings, and the models will be trained and tested on this data. The overarching objective is not just to fit the model to the data but to enhance its classification performance, ensuring it can accurately categorize different building types based on their 3D point-cloud representations.    
 
 **Goal:**
 
-    The primary aim is to push the boundaries of what's achievable in terms of classification scores on the BuildingNet dataset. Specifically, the focus is on point-cloud representations of buildings. Point clouds, with their intricate details and depth, present unique challenges, and achieving high classification accuracy on them would signify a significant advancement in the field.
+The primary aim is to push the boundaries of what's achievable in terms of classification scores on the BuildingNet dataset. Specifically, the focus is on point-cloud representations of buildings. Point clouds, with their intricate details and depth, present unique challenges, and achieving high classification accuracy on them would signify a significant advancement in the field.
 
        
 
@@ -50,27 +50,28 @@ To achieve accurate classification, it's essential to understand the various way
 
 **Understanding Diffusion Models:**
 
-    Diffusion models are a subset of generative models that operate based on the principle of simulating a diffusion process. This process begins with a known data point and introduces random noise to it iteratively, diffusing it until it converges to a simple Gaussian noise. The reverse of this process, where the Gaussian noise is transformed back into a structured data sample, embodies the generative capability of the model. In essence, diffusion models mimic the natural process of diffusion to generate new data samples from random noise.
+Diffusion models are a subset of generative models that operate based on the principle of simulating a diffusion process. This process begins with a known data point and introduces random noise to it iteratively, diffusing it until it converges to a simple Gaussian noise. The reverse of this process, where the Gaussian noise is transformed back into a structured data sample, embodies the generative capability of the model. In essence, diffusion models mimic the natural process of diffusion to generate new data samples from random noise.
 
 **Classification Via Denoising:**
 
-    A pivotal insight in the realm of diffusion models is their potential for classification through the denoising process. Traditionally, denoising aims to recover the original structure of data by reversing the noise addition. However, for classification, this denoising process can be conditioned on specific class labels. This means that during the denoising phase, the model can be instructed to generate a sample that aligns with a particular class. By observing how well the model denoises the data into a specific class, one can infer the likelihood of the data belonging to that class.
+A pivotal insight in the realm of diffusion models is their potential for classification through the denoising process. Traditionally, denoising aims to recover the original structure of data by reversing the noise addition. However, for classification, this denoising process can be conditioned on specific class labels. This means that during the denoising phase, the model can be instructed to generate a sample that aligns with a particular class. By observing how well the model denoises the data into a specific class, one can infer the likelihood of the data belonging to that class.
 
 
 **Zero-Shot Classification:**
 
-    One of the standout capabilities of diffusion models is their aptitude for zero-shot classification. This involves classifying data into categories that the model hasn't encountered during its training phase. The methodology is as follows:
+One of the standout capabilities of diffusion models is their aptitude for zero-shot classification. This involves classifying data into categories that the model hasn't encountered during its training phase. The methodology is as follows:
 
-        * Train the diffusion model as a generative model on a dataset without explicitly using class labels.
-        * During the classification phase, utilize the denoising process conditioned on class labels (including those not seen during training) to determine which class the model is most likely to generate.
+* Train the diffusion model as a generative model on a dataset without explicitly using class labels.
+* During the classification phase, utilize the denoising process conditioned on class labels (including those not seen during training) to determine which class the model is most likely to generate.
 
 **Scoring Mechanism:**
 
-    The scoring mechanism is integral to the classification process in diffusion models. Here's how it works:
+The scoring mechanism is integral to the classification process in diffusion models. Here's how it works:
+* For each potential class, the reverse diffusion process (denoising) is executed, conditioned on that specific class.
+* The model then measures the likelihood or score of the denoised sample aligning with each class.
+* The data point is subsequently assigned to the class that yields the highest likelihood or score, effectively classifying it.
 
-        For each potential class, the reverse diffusion process (denoising) is executed, conditioned on that specific class.
-        The model then measures the likelihood or score of the denoised sample aligning with each class.
-        The data point is subsequently assigned to the class that yields the highest likelihood or score, effectively classifying it.
+        
 
 # Combining LION with Diffusion Classifier
 
