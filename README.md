@@ -49,7 +49,8 @@ The primary aim is to push the boundaries of what's achievable in terms of class
 
 # Diffusion Model For Classification 
 
-![ALT](Diffusion_Classifier.jpeg)
+<img src="Diffusion_Classifier.jpeg" alt="ALT" width="800" height="600"/>
+
 
 **Understanding Diffusion Models:**
 
